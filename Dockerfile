@@ -10,7 +10,7 @@ FROM debian:bookworm-slim as Runner
 COPY --from=Builder --chown=root:root /root/app/target/release/mine /usr/local/bin/mine
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends openssl \
+    && apt-get install -y --no-install-recommends openssl ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd --create-home --user-group mine
