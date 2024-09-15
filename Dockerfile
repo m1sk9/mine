@@ -17,6 +17,6 @@ RUN useradd --create-home --user-group ssv2
 USER ssv2
 WORKDIR /home/ssv2
 
-LABEL org.opencontainers.image.source=https://github.com/m1sk9/ssv2
+LABEL org.opencontainers.image.source=https://github.com/SpaceServerUniverse/ServerStatusDiscordBotV2
 
 ENTRYPOINT [ "sh", "-c", "ssv2" ]

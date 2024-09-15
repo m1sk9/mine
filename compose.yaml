@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/SpaceServerUniverse/ssv2:v0
+    image: ghcr.io/SpaceServerUniverse/ssv:v0
     env_file:
       - .env
     restart: always
