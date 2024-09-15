@@ -17,9 +17,7 @@ type Context<'a> = poise::Context<'a, Data, Error>;
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt().compact().init();
 
-    if let Err(why) = dotenvy::dotenv() {
-        Err(anyhow::anyhow!("Failed to load .env file: {}", why))?;
-    }
+    dotenvy::dotenv().ok();
 
     let intents = GatewayIntents::MESSAGE_CONTENT | GatewayIntents::GUILD_MESSAGES;
     let framework_options = poise::FrameworkOptions {

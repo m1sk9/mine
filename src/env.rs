@@ -9,5 +9,5 @@ pub struct Env {
 
 pub fn load_envs() -> &'static Env {
     static ENV: std::sync::OnceLock<Env> = std::sync::OnceLock::new();
-    ENV.get_or_init(|| envy::from_env::<Env>().expect("Failed to load envs"))
+    ENV.get_or_init(|| envy::from_env().expect("Failed to load environment variables"))
 }
