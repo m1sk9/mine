@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/m1sk9/mine/compare/mine-v0.2.1...mine-v0.2.2) (2024-09-15)
+
+
+### Bug Fixes
+
+* ssl error ([e18ceac](https://github.com/m1sk9/mine/commit/e18ceac1d186d73686d85cad43f694350d4bcdf8))
+
 ## [0.2.1](https://github.com/m1sk9/mine/compare/mine-v0.2.0...mine-v0.2.1) (2024-09-15)
 
 
