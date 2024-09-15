@@ -934,6 +934,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "mine"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "dotenvy",
+ "envy",
+ "poise",
+ "reqwest 0.12.7",
+ "serde",
+ "thiserror",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "mini-moka"
 version = "0.10.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1744,22 +1760,6 @@ name = "spin"
 version = "0.9.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
-
-[[package]]
-name = "ssv2"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "dotenvy",
- "envy",
- "poise",
- "reqwest 0.12.7",
- "serde",
- "thiserror",
- "tokio",
- "tracing",
- "tracing-subscriber",
-]
 
 [[package]]
 name = "strsim"

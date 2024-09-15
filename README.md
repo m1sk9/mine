@@ -1,4 +1,6 @@
-# ServerStatusDiscordBotV2
+# Mine
+
+Minecraft サーバーの情報を Discord で確認できるようにする Bot です.
 
 ## Usage
 
