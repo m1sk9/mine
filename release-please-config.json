@@ -1,0 +1,9 @@
+{
+    "last-release-sha": "",
+    "packages": {
+      ".": {
+        "release-type": "rust",
+        "package-name": "mine"
+      }
+    }
+}
