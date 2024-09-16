@@ -41,7 +41,7 @@ pub async fn status(ctx: crate::Context<'_>) -> anyhow::Result<(), anyhow::Error
             "プレイヤーリストは /playerlist で確認できます",
         ))
         .color(0x27BD59);
-    let reply = CreateReply::default().embed(embed);
+    let reply = CreateReply::default().embed(embed).ephemeral(true);
 
     poise::send_reply(ctx, reply).await?;
 
@@ -50,10 +50,7 @@ pub async fn status(ctx: crate::Context<'_>) -> anyhow::Result<(), anyhow::Error
 
 /// サーバーのプレイヤーリストを表示します
 #[poise::command(prefix_command, slash_command)]
-pub async fn playerlist(
-    ctx: crate::Context<'_>,
-    #[description = "UUID を表示するかどうか"] is_show_uuid: Option<bool>,
-) -> anyhow::Result<(), anyhow::Error> {
+pub async fn playerlist(ctx: crate::Context<'_>) -> anyhow::Result<(), anyhow::Error> {
     let env = crate::env::load_envs();
 
     let url = match &env.server_port {
@@ -67,43 +64,42 @@ pub async fn playerlist(
         .context("Failed to get server status")?;
 
     if !res.online {
-        poise::say_reply(ctx, "サーバーはオフラインです").await?;
+        poise::send_reply(
+            ctx,
+            CreateReply::default()
+                .content("サーバーはオフラインです")
+                .ephemeral(true),
+        )
+        .await?;
         return Ok(());
     }
 
     if res.players.online == 0 {
-        poise::say_reply(ctx, "現在プレイヤーはいません").await?;
+        poise::send_reply(
+            ctx,
+            CreateReply::default()
+                .content("現在プレイヤーはいません")
+                .ephemeral(true),
+        )
+        .await?;
         return Ok(());
     }
 
-    // Note: `-#` を使うと Discord では文字を小さく表示できる
-    match is_show_uuid {
-        Some(c) if c => {
-            let uuids = res
-                .players
-                .list
-                .iter()
-                .map(|p| p.uuid.clone())
-                .collect::<Vec<String>>()
-                .join(", ");
-            let result = format!("{}\n-# 現在 {} 人がプレイ中です", uuids, res.players.online);
-            poise::say_reply(ctx, result).await?;
-        }
-        _ => {
-            let players = res
-                .players
-                .list
-                .iter()
-                .map(|p| p.name.clone())
-                .collect::<Vec<String>>()
-                .join(", ");
-            let result = format!(
-                "{}\n-# 現在 {} 人がプレイ中です",
-                players, res.players.online
-            );
-            poise::say_reply(ctx, result).await?;
-        }
-    }
+    let players = res
+        .players
+        .list
+        .iter()
+        .map(|p| p.name.clone())
+        .collect::<Vec<String>>()
+        .join(", ");
+    let reply = CreateReply::default()
+        .content(format!(
+            "{}\n-# 現在 {} 人がプレイ中です",
+            players, res.players.online
+        ))
+        .ephemeral(true);
+
+    poise::send_reply(ctx, reply).await?;
 
     Ok(())
 }
