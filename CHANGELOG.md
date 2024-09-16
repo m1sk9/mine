@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/m1sk9/mine/compare/mine-v0.2.2...mine-v0.3.0) (2024-09-16)
+
+
+### Features
+
+* Release mine v0.3.0 ([31044db](https://github.com/m1sk9/mine/commit/31044db02880ec1ec3affd957e867f81facabd7a))
+
 ## [0.2.2](https://github.com/m1sk9/mine/compare/mine-v0.2.1...mine-v0.2.2) (2024-09-15)
 
 
