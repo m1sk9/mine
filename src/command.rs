@@ -21,17 +21,23 @@ pub async fn status(ctx: crate::Context<'_>) -> anyhow::Result<(), anyhow::Error
         .await
         .context("Failed to get server status")?;
 
-    let status = if res.online {
-        "オンライン"
-    } else {
-        "オフライン"
-    };
+    if !res.online {
+        poise::send_reply(
+            ctx,
+            CreateReply::default()
+                .content("サーバーはオフラインです")
+                .ephemeral(true),
+        )
+        .await?;
+        return Ok(());
+    }
 
     let embed = CreateEmbed::default()
         .title("サーバー情報")
         .description(&env.server_name)
-        .field("ステータス", status, true)
-        .field("バージョン", res.version, true)
+        // オフラインだったらそもそも見ない
+        .field("ステータス", "オンライン", true)
+        .field("バージョン", res.version.unwrap_or_default(), true)
         .field(
             "プレイヤー",
             format!("**{}**/{}", res.players.online, res.players.max),
@@ -88,6 +94,7 @@ pub async fn playerlist(ctx: crate::Context<'_>) -> anyhow::Result<(), anyhow::E
     let players = res
         .players
         .list
+        .unwrap_or_default()
         .iter()
         .map(|p| p.name.clone())
         .collect::<Vec<String>>()
