@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/m1sk9/mine/compare/mine-v0.3.0...mine-v0.3.1) (2024-09-17)
+
+
+### Bug Fixes
+
+* fix online behavior ([455d7f2](https://github.com/m1sk9/mine/commit/455d7f2c1b7ad2da148fefad2d0fefc72fb5f4d0))
+
 ## [0.3.0](https://github.com/m1sk9/mine/compare/mine-v0.2.2...mine-v0.3.0) (2024-09-16)
 
 
