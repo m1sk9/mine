@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.2](https://github.com/m1sk9/mine/compare/mine-v0.3.1...mine-v0.3.2) (2024-10-18)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate anyhow to v1.0.90 ([65e7612](https://github.com/m1sk9/mine/commit/65e7612aadd6f3081cafce32d4e6756e610de9d0))
+* **deps:** update rust crate reqwest to v0.12.8 ([b16853a](https://github.com/m1sk9/mine/commit/b16853a29125a2019587658459eda915c1349664))
+* **deps:** update rust crate thiserror to v1.0.64 ([eead0ea](https://github.com/m1sk9/mine/commit/eead0ea940e4f80a6a94800d8e6c25c1e72b10e9))
+
 ## [0.3.1](https://github.com/m1sk9/mine/compare/mine-v0.3.0...mine-v0.3.1) (2024-09-17)
 
 
